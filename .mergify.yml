@@ -7,6 +7,14 @@ pull_request_rules:
       backport:
         branches:
           - develop
+          
+  - name: automatic merge master to develop branch
+    conditions:
+      - head=master
+      - base=develop
+    actions:
+      merge:
+        method: merge
   
   - name: automatic merge for develop
     conditions:
