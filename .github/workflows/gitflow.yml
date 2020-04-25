@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    name: gitflow
+    name: check
     runs-on: ubuntu-16.04
     steps:
     - uses: Logerfo/gitflow-action@0.0.4
