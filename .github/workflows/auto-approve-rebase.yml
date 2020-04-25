@@ -1,9 +1,7 @@
 name: auto-approve-rebase
 
 on:
-  pull_request:
-    branches:
-    - develop
+  pull_request
 
 jobs:
   auto-approve:
