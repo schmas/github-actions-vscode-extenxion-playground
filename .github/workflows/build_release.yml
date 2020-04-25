@@ -65,6 +65,11 @@ jobs:
 
       - name: clean install dependencies
         run: npm ci
+        
+      - name: get npm env
+        id: npm-env
+        run: |
+          echo "::set-output name=project_name::$(npm run get-project-name --silent)"
 
       - name: update metadata in package.json
         uses: onlyutkarsh/patch-files-action@v1.0.1
@@ -84,9 +89,10 @@ jobs:
         run: npm run package
 
       - name: upload vsix as artifact
-        uses: actions/upload-artifact@v2-preview
+        uses: actions/upload-artifact@v1
         with:
-          path: '**/*.vsix'
+          name: ${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
+          path: ${{ github.workspace }}/${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
 
       # - name: publish to marketplace
       #   if: github.ref == 'refs/heads/master'
