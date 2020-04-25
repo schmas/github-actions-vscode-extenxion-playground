@@ -67,9 +67,9 @@
     "test": "node ./out/test/runTest.js",
     "get-vscode-version": "echo $npm_package_engines_vscode",
     "package": "vsce package",
-		"deploy": "vsce publish -p",
-		"prune-branches": "git remote prune origin",
-		"clean": "git clean -fdX"
+    "deploy": "vsce publish -p",
+    "prune-branches": "git remote prune origin",
+    "clean": "git clean -fdX"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
