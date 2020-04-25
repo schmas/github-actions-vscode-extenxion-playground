@@ -99,6 +99,7 @@ jobs:
       #   run: npm run deploy ${{ env.VSCODE_MARKETPLACE_TOKEN }}
 
       - name: create a release
+        id: create_release
         if: github.ref == 'refs/heads/master'
         uses: actions/create-release@latest
         env:
@@ -106,3 +107,15 @@ jobs:
         with:
           tag_name: v${{ steps.gitversion.outputs.semVer }}
           release_name: v${{ steps.gitversion.outputs.semVer }}
+          
+      - name: upload release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
+          asset_name: ${{ github.workspace }}/${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
+          asset_content_type: application/zip    
+      
