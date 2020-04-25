@@ -1,0 +1,33 @@
+pull_request_rules:
+  - name: backport master to develop branch
+    conditions:
+      - base=master
+      - label=backport-to-develop
+    actions:
+      backport:
+        branches:
+          - develop
+          
+  - name: automatic merge master to develop branch
+    conditions:
+      - head=master
+      - base=develop
+    actions:
+      merge:
+        method: merge
+  
+  - name: automatic merge for develop
+    conditions:
+      - "-head=master"
+      - "#approved-reviews-by>=1"
+      - base=develop
+    actions:
+      merge:
+        method: merge
+  
+  - name: automatic merge for ImgBot pull requests
+    conditions:
+      - author=imgbot[bot]
+    actions:
+      merge:
+        method: merge
