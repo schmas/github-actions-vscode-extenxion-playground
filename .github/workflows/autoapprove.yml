@@ -3,7 +3,8 @@ name: auto approve
 on: pull_request
 
 jobs:
-  auto-approve:
+  build:
+    name: auto_approve
     runs-on: ubuntu-latest
     steps:
     - name: auto approve rebase
