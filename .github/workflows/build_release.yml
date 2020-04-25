@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout
-        uses: actions/checkout@latest
+        uses: actions/checkout@master
 
       - name: install Node.js
         uses: actions/setup-node@v1
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@latest
+        uses: actions/checkout@master
 
       - name: fetch all history and tags from all branches for gitversion
         run: git fetch --prune --unshallow
