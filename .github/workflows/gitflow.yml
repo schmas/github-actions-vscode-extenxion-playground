@@ -1,11 +1,14 @@
 name: gitflow
-on: 
-  # To create pull requests.
-  push:
-  # To merge pull requests if not possible during the push run. Remove if `auto-merge` is `false`.
-  pull_request_review:
-  check_run:
-    types: [completed]
+
+on: repository_dispatch
+
+# on: 
+#   # To create pull requests.
+#   push:
+#   # To merge pull requests if not possible during the push run. Remove if `auto-merge` is `false`.
+#   pull_request_review:
+#   check_run:
+#     types: [completed]
 
 jobs:
   build:

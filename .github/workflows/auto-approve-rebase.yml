@@ -1,7 +1,9 @@
 name: auto-approve-rebase
 
-on:
-  pull_request
+on: repository_dispatch
+
+# on:
+#   pull_request
 
 jobs:
   auto-approve:
