@@ -1,7 +1,7 @@
 name: auto_approve
 
 on:
-  # pull_request:
+  pull_request:
   check_run:
     types: [completed]
 

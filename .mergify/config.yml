@@ -3,10 +3,11 @@ pull_request_rules:
     conditions:
       - head=master
       - base=develop
+      - "#approved-reviews-by>=1"
     actions:
       merge:
         method: merge
-  
+
   - name: automatic merge for develop
     conditions:
       - "-head=master"
@@ -15,7 +16,7 @@ pull_request_rules:
     actions:
       merge:
         method: merge
-  
+
   - name: automatic merge for ImgBot pull requests
     conditions:
       - author=imgbot[bot]
