@@ -18,6 +18,7 @@ pull_request_rules:
   
   - name: automatic merge for develop
     conditions:
+      - "-head=master"
       - "#approved-reviews-by>=1"
       - base=develop
     actions:
