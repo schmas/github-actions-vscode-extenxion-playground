@@ -66,6 +66,7 @@
     "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js",
     "get-vscode-version": "echo $npm_package_engines_vscode",
+    "get-project-name": "echo $npm_package_name",
     "package": "vsce package",
     "deploy": "vsce publish -p",
     "prune-branches": "git remote prune origin",
