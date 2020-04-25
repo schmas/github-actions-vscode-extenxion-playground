@@ -14,8 +14,14 @@ jobs:
       with:
         github-token: "${{ secrets.BOT_GITHUB_TOKEN }}"
 
-    - name: auto approve backport
+    - name: auto approve imgbot
       uses: hmarr/auto-approve-action@v2.0.0
       if: github.actor == 'imgbot[bot]'
+      with:
+        github-token: "${{ secrets.BOT_GITHUB_TOKEN }}"
+    
+    - name: auto approve imgbot
+      uses: hmarr/auto-approve-action@v2.0.0
+      if: github.actor == 'schmas'
       with:
         github-token: "${{ secrets.BOT_GITHUB_TOKEN }}"
