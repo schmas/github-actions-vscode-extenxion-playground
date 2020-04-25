@@ -1,7 +1,9 @@
 name: auto approve pr
 
 on:
-  pull_request
+  pull_request:
+    branches:
+    - develop
 
 jobs:
   auto-approve:
