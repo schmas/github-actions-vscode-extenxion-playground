@@ -33,7 +33,7 @@ jobs:
 
   release:
     needs: test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@master
