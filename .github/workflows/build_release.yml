@@ -71,12 +71,12 @@ jobs:
         run: |
           echo "::set-output name=project_name::$(npm run get-project-name --silent)"
 
-      - name: update metadata in package.json
-        uses: onlyutkarsh/patch-files-action@v1.0.1
-        with:
-          files: '${{github.workspace}}/package.json'
-          patch-syntax: |
-            = /version => "${{ steps.gitversion.outputs.semVer }}"
+      # - name: update metadata in package.json
+      #   uses: onlyutkarsh/patch-files-action@v1.0.1
+      #   with:
+      #     files: '${{github.workspace}}/package.json'
+      #     patch-syntax: |
+      #       = /version => "${{ steps.gitversion.outputs.semVer }}"
 
       - name: changelog
         id: auto-changelog
@@ -93,7 +93,7 @@ jobs:
       - name: npm version
         id: npm-version
         run: |
-          npm version ${{ steps.gitversion.outputs.semVer }} -m "Release %s" && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
+          npm version ${{ steps.gitversion.outputs.semVer }} -m "Release %s"
           git push --follow-tags
 
       - name: compile and create vsix
