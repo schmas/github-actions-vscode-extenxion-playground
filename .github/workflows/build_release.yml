@@ -103,8 +103,6 @@ jobs:
         uses: scottbrenner/generate-changelog-action@master
         env:
           REPO: ${{ github.repository }}
-        with:
-          args: --tag ${{ steps.gitversion.outputs.semVer }}
 
       - name: create a release
         id: create_release
