@@ -1,35 +1,36 @@
 name: build_release
 
 on:
-  push:
-    branches:
-      - master
-    paths-ignore: # dont run when changes made to these folders
-      - '.vscode/**'
+  repository_dispatch:
+  # push:
+  #   branches:
+  #     - master
+  #   paths-ignore: # dont run when changes made to these folders
+  #     - '.vscode/**'
 
 jobs:
-  test:
-    timeout-minutes: 10
-    strategy:
-      matrix:
-        # os: [macos-latest, ubuntu-latest, windows-latest]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
+  # test:
+  #   timeout-minutes: 10
+  #   strategy:
+  #     matrix:
+  #       # os: [macos-latest, ubuntu-latest, windows-latest]
+  #       os: [ubuntu-latest]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@master
 
-      - name: install Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 8.x
+  #     - name: install Node.js
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 8.x
 
-      - run: npm install
+  #     - run: npm install
 
-      - name: run tests
-        uses: GabrielBB/xvfb-action@v1.0
-        with:
-          run: npm test
+  #     - name: run testsC7a9l8a1!
+  #       uses: GabrielBB/xvfb-action@v1.0
+  #       with:
+  #         run: npm test
 
   release:
     needs: test
