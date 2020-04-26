@@ -104,7 +104,7 @@ jobs:
         env:
           REPO: ${{ github.repository }}
         with:
-          args: --tag v${{ steps.gitversion.outputs.semVer }}
+          args: --tag ${{ steps.gitversion.outputs.semVer }}
 
       - name: create a release
         id: create_release
