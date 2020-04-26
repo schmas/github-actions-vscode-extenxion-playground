@@ -93,8 +93,8 @@ jobs:
       - name: npm version
         id: npm-version
         run: |
-          # git config user.email "$CI_USER@users.noreply.github.com"
-          # git config user.name "continuous-integration"
+          git config user.email "$CI_USER@users.noreply.github.com"
+          git config user.name "continuous-integration"
 
           npm version ${{ steps.gitversion.outputs.semVer }} -m "Release %s"
           # git push --follow-tags "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
