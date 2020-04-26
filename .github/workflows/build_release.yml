@@ -102,6 +102,8 @@ jobs:
         id: auto-changelog
         run: |
           changelog=$(npm run --silent changelog-release -- -v v${{ steps.gitversion.outputs.semVer }})
+          echo $changelog
+
           changelog="${changelog//'%'/'%25'}"
           changelog="${changelog//$'\n'/'%0A'}"
           changelog="${changelog//$'\r'/'%0D'}"
