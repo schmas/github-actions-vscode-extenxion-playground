@@ -93,6 +93,9 @@ jobs:
       - name: npm version
         id: npm-version
         run: |
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config user.name "$GITHUB_ACTOR"
+          
           npm version ${{ steps.gitversion.outputs.semVer }} -m "Release %s"
           git push --follow-tags
 
