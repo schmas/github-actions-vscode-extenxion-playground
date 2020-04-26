@@ -2,13 +2,13 @@
   "name": "jump-to-tests",
   "displayName": "Jump to Tests",
   "description": "Switch between the code and the test file",
-  "version": "0.0.1",
+  "version": "2.0.16",
   "publisher": "schmas",
   "engines": {
     "vscode": "^1.44.0"
   },
   "repository": {
-    "url": "https://github.com/schmas/vscode-jump-to-tests"
+    "url": "https://github.com/schmas/github-actions-vscode-extenxion-playground"
   },
   "icon": "images/jump-to-tests.png",
   "categories": [
@@ -70,7 +70,11 @@
     "get-vscode-version": "echo $npm_package_engines_vscode",
     "get-project-name": "echo $npm_package_name",
     "package": "vsce package",
-    "deploy": "vsce publish -p"
+    "deploy": "vsce publish -p",
+    "changelog": "auto-changelog -p -u --commit-limit false",
+    "changelog-release": "auto-changelog -p -u --commit-limit false --template .changelog-github-template.hbs --unreleased --stdout",
+    "changelog-debug": "auto-changelog -p --template json --output changelog-data.json",
+    "version": ""
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
@@ -106,5 +110,13 @@
   },
   "dependencies": {
     "lodash": "^4.17.15"
+  },
+  "auto-changelog": {
+    "commitLimit": false,
+    "unreleased": true,
+    "template": ".changelog-template.hbs",
+    "includeBranch": [
+      "master"
+    ]
   }
 }
