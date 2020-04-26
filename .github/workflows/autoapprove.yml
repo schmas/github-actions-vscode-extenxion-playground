@@ -1,9 +1,6 @@
 name: auto_approve
 
-on:
-  pull_request:
-  check_run:
-    types: [completed]
+on: pull_request
 
 jobs:
   build:
