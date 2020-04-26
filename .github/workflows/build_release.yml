@@ -145,18 +145,12 @@ jobs:
         with:
           branch: develop
 
-  pr-develop:
+  pr-to-develop:
     needs: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: gr2m/create-or-update-pull-request-action@v1.2.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          ref: develop
-      - name: Reset promotion branch
-        run: |
-          git fetch origin master:master
-          git reset --hard master
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v2
-        with:
-          branch: develop
+          branch: "develop"
