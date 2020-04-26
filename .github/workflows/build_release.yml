@@ -145,3 +145,18 @@ jobs:
         with:
           branch: develop
 
+  pr-develop:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: develop
+      - name: Reset promotion branch
+        run: |
+          git fetch origin master:master
+          git reset --hard master
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          branch: develop
