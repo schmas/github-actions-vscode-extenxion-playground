@@ -1,4 +1,4 @@
-name: build_release
+name: build_release_publish
 
 on:
   push:
@@ -8,31 +8,30 @@ on:
       - '.vscode/**'
 
 jobs:
-  # test:
-  #   timeout-minutes: 10
-  #   strategy:
-  #     matrix:
-  #       # os: [macos-latest, ubuntu-latest, windows-latest]
-  #       os: [ubuntu-latest]
-  #   runs-on: ${{ matrix.os }}
-  #   steps:
-  #     - name: checkout
-  #       uses: actions/checkout@master
+  test:
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
 
-  #     - name: install Node.js
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 8.x
+      - name: install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
 
-  #     - run: npm install
+      - run: npm install
 
-  #     - name: run testsC7a9l8a1!
-  #       uses: GabrielBB/xvfb-action@v1.0
-  #       with:
-  #         run: npm test
+      - name: run testsC7a9l8a1!
+        uses: GabrielBB/xvfb-action@v1.0
+        with:
+          run: npm test
 
   release:
-    # needs: test
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -80,6 +79,7 @@ jobs:
 
       - name: changelog
         id: auto-changelog
+        if: github.ref == 'refs/heads/master'
         run: |
           changelog=$(npm run --silent changelog-release -- -v v${{ steps.gitversion.outputs.semVer }})
           echo $changelog
@@ -92,6 +92,7 @@ jobs:
 
       - name: npm version
         id: npm-version
+        if: github.ref == 'refs/heads/master'
         run: |
           git config user.email "$CI_USER@users.noreply.github.com"
           git config user.name "continuous-integration"
@@ -115,6 +116,7 @@ jobs:
 
       - name: git push
         id: git-push
+        if: github.ref == 'refs/heads/master'
         run: |
           git push --follow-tags "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
         env:
@@ -148,7 +150,7 @@ jobs:
 
   pr-to-develop:
     needs: release
-    name: gitflow
+    name: pr-to-develop
     runs-on: ubuntu-latest
     steps:
       - uses: Logerfo/gitflow-action@0.0.4
