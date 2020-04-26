@@ -1,12 +1,12 @@
 name: build_release
 
 on:
-  repository_dispatch:
-  # push:
-  #   branches:
-  #     - master
-  #   paths-ignore: # dont run when changes made to these folders
-  #     - '.vscode/**'
+  # repository_dispatch:
+  push:
+    branches:
+      - master
+    paths-ignore: # dont run when changes made to these folders
+      - '.vscode/**'
 
 jobs:
   # test:
@@ -100,10 +100,9 @@ jobs:
       #   run: npm run deploy ${{ env.VSCODE_MARKETPLACE_TOKEN }}
 
       - name: changelog
-        id: generate-changelog
-        uses: scottbrenner/generate-changelog-action@master
-        env:
-          REPO: ${{ github.repository }}
+        id: auto-changelog
+        run: |
+          echo "::set-output name=changelog::$(npm run --silent changelog-release -- -v v${{ steps.gitversion.outputs.semVer }})"
 
       - name: create a release
         id: create_release
@@ -115,7 +114,7 @@ jobs:
           tag_name: v${{ steps.gitversion.outputs.semVer }}
           release_name: v${{ steps.gitversion.outputs.semVer }}
           body: |
-            ${{ steps.generate-changelog.outputs.changelog }}
+            ${{ steps.auto-changelog.outputs.changelog }}
           draft: false
           prerelease: false
 

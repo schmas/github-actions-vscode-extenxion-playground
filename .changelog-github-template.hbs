@@ -26,8 +26,8 @@
       commits
       heading='### Features'
       message='(feature: )|(Feature: )'
-      exclude='(fix: )|(Fix: )|(break: )|(Break: )'}}
-    * {{subject}} ([`{{shorthash}}`]({{href}}))
+      exclude='(fix: )|(Fix: )|(break: )|(Break: )|(ci: )|(CI: )'}}
+      * {{subject}} ([`{{shorthash}}`]({{href}}))
     {{/commit-list}}
 
     {{! use fix: or Fix: }}
@@ -35,8 +35,8 @@
       commits
       heading='### Fixes'
       message='(fix: )|(Fix: )'
-      exclude='(break: )|(Break: )|(Feature: )|(feature: )'}}
-    * {{subject}} ([`{{shorthash}}`]({{href}}))
+      exclude='(break: )|(Break: )|(Feature: )|(feature: )|(ci: )|(CI: )'}}
+      * {{subject}} ([`{{shorthash}}`]({{href}}))
     {{/commit-list}}
 
     {{! user break: or Break: }}
@@ -44,15 +44,24 @@
       commits
       heading='### Breaking changes'
       message='(break: )|(Break: )'
-      exclude='(fix: )|(Fix: )|(Feature: )|(feature: )'}}
-    * {{subject}} ([`{{shorthash}}`]({{href}}))
+      exclude='(fix: )|(Fix: )|(Feature: )|(feature: )|(ci: )|(CI: )'}}
+      * {{subject}} ([`{{shorthash}}`]({{href}}))
+    {{/commit-list}}
+
+    {{! user ci: or CI: }}
+    {{#commit-list
+      commits
+      heading='### Continuous Integration'
+      message='(ci: )|(CI: )'
+      exclude='(fix: )|(Fix: )|(Feature: )|(feature: )|(break: )|(Break: )'}}
+      * {{subject}} ([`{{shorthash}}`]({{href}}))
     {{/commit-list}}
 
     {{#commit-list
       commits
-      exclude='(fix: )|(Fix: )|(Feature: )|(feature: )|(break: )|(Break: )'
+      exclude='(fix: )|(Fix: )|(Feature: )|(feature: )|(break: )|(Break: )|(ci: )|(CI: )'
       heading='### Commits'}}
-      - {{#if breaking}}**Breaking change:** {{/if}}{{subject}} {{#if href}}[`{{shorthash}}`]({{href}}){{/if}}
+      - {{subject}} {{#if href}}[`{{shorthash}}`]({{href}}){{/if}}
     {{/commit-list}}
   {{/if}}
 {{/each}}
