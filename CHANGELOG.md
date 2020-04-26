@@ -1,10 +1,20 @@
 # Changelog
 
+## [v2.1.21](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.1.20...v2.1.21) (2020-04-26)
+
+### Commits
+
+- updated [`018d80d`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/018d80d79c60d0ccdff7377249162b15b1edbad4)
+
 ## [v2.1.20](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.1.18...v2.1.20) (2020-04-26)
 
 ### Continuous Integration
 
 * ci: updated ([`c277607`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/c277607063c64de5d03cbe63375b4e49b36e85f0))
+
+### Commits
+
+- Release 2.1.20 [`bae09e9`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/bae09e9d7798cd689dddd74759f7fe3f4f59b05c)
 
 ## [v2.1.18](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.1.16...v2.1.18) (2020-04-26)
 
