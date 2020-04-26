@@ -2,11 +2,10 @@
 
 {{#each releases}}
   {{#if href}}
-    ## [{{title}}]({{href}}){{#if tag}}{{/if}}
+    ## [{{title}}]({{href}}) ({{isoDate}})
   {{else}}
-    ## {{title}}{{#if tag}} - {{isoDate}}{{/if}}
+    ## {{title}} ({{isoDate}})
   {{/if}}
-  [{{isoDate}}]
 
   {{#if summary}}
     {{summary}}

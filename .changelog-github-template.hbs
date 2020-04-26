@@ -1,18 +1,13 @@
 {{#each releases}}
   {{#if @first}}
-    {{#if href}}
-      ## [{{title}}]({{href}}){{#if tag}}{{/if}}
-    {{else}}
-      ## {{title}}{{#if tag}} - {{isoDate}}{{/if}}
-    {{/if}}
-    [{{isoDate}}]
+    #### {{title}} ({{isoDate}})
 
     {{#if summary}}
       {{summary}}
     {{/if}}
 
     {{#if merges}}
-      ### Merged
+      ##### Merged
 
       {{#each merges}}
         - {{#if commit.breaking}}**Breaking change:** {{/if}}{{message}} {{#if href}}[`#{{id}}`]({{href}}){{/if}}
@@ -22,7 +17,7 @@
     {{! lit commits with feature: in message, use feature: or Feature: }}
     {{#commit-list
       commits
-      heading='### Features'
+      heading='##### Features'
       message='(feature: )|(Feature: )'
       exclude='(fix: )|(Fix: )|(break: )|(Break: )|(ci: )|(CI: )'}}
       * {{subject}} ([`{{shorthash}}`]({{href}}))
@@ -31,7 +26,7 @@
     {{! use fix: or Fix: }}
     {{#commit-list
       commits
-      heading='### Fixes'
+      heading='##### Fixes'
       message='(fix: )|(Fix: )'
       exclude='(break: )|(Break: )|(Feature: )|(feature: )|(ci: )|(CI: )'}}
       * {{subject}} ([`{{shorthash}}`]({{href}}))
@@ -40,7 +35,7 @@
     {{! user break: or Break: }}
     {{#commit-list
       commits
-      heading='### Breaking changes'
+      heading='##### Breaking changes'
       message='(break: )|(Break: )'
       exclude='(fix: )|(Fix: )|(Feature: )|(feature: )|(ci: )|(CI: )'}}
       * {{subject}} ([`{{shorthash}}`]({{href}}))
@@ -49,7 +44,7 @@
     {{! user ci: or CI: }}
     {{#commit-list
       commits
-      heading='### Continuous Integration'
+      heading='##### Continuous Integration'
       message='(ci: )|(CI: )'
       exclude='(fix: )|(Fix: )|(Feature: )|(feature: )|(break: )|(Break: )'}}
       * {{subject}} ([`{{shorthash}}`]({{href}}))
@@ -58,7 +53,7 @@
     {{#commit-list
       commits
       exclude='(fix: )|(Fix: )|(Feature: )|(feature: )|(break: )|(Break: )|(ci: )|(CI: )'
-      heading='### Commits'}}
+      heading='##### Commits'}}
       - {{subject}} {{#if href}}[`{{shorthash}}`]({{href}}){{/if}}
     {{/commit-list}}
   {{/if}}
