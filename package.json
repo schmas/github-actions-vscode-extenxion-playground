@@ -72,6 +72,7 @@
     "package": "vsce package",
     "deploy": "vsce publish -p",
     "changelog": "auto-changelog -p -u --commit-limit false",
+    "changelog-release": "auto-changelog -p -u --commit-limit false --template .changelog-github-template.hbs --unreleased --stdout",
     "changelog-debug": "auto-changelog -p --template json --output changelog-data.json"
   },
   "devDependencies": {
