@@ -3,7 +3,7 @@ pull_request_rules:
     conditions:
       - head=master
       - base=develop
-      - status-success=test
+      # - status-success=test
       - status-success=release
     actions:
       merge:
