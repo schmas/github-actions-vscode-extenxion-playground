@@ -33,7 +33,7 @@ jobs:
   #         run: npm test
 
   release:
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
       - name: checkout
