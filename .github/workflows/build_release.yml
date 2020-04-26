@@ -85,12 +85,6 @@ jobs:
       #   env:
       #     VERSION: "${{ steps.gitversion.outputs.semVer }}"
 
-      - name: changelog
-        id: generate-changelog
-        uses: scottbrenner/generate-changelog-action@master
-        env:
-          REPO: ${{ github.repository }}
-
       - name: compile and create vsix
         run: npm run package
 
@@ -103,6 +97,14 @@ jobs:
       # - name: publish to marketplace
       #   if: github.ref == 'refs/heads/master'
       #   run: npm run deploy ${{ env.VSCODE_MARKETPLACE_TOKEN }}
+
+      - name: changelog
+        id: generate-changelog
+        uses: scottbrenner/generate-changelog-action@master
+        env:
+          REPO: ${{ github.repository }}
+        with:
+          args: --tag v${{ steps.gitversion.outputs.semVer }}
 
       - name: create a release
         id: create_release
