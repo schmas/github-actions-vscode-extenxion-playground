@@ -65,12 +65,12 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js",
+    "prune-branches": "git remote prune origin",
+    "clean": "git clean -fdX",
     "get-vscode-version": "echo $npm_package_engines_vscode",
     "get-project-name": "echo $npm_package_name",
     "package": "vsce package",
-    "deploy": "vsce publish -p",
-    "prune-branches": "git remote prune origin",
-    "clean": "git clean -fdX"
+    "deploy": "vsce publish -p"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
@@ -80,6 +80,7 @@
     "@types/vscode": "^1.44.0",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
+    "auto-changelog": "^2.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
