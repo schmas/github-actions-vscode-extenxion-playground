@@ -2,7 +2,7 @@
   "name": "jump-to-tests",
   "displayName": "Jump to Tests",
   "description": "Switch between the code and the test file",
-  "version": "2.1.15",
+  "version": "2.1.16",
   "publisher": "schmas",
   "engines": {
     "vscode": "^1.44.0"
