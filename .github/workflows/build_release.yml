@@ -93,15 +93,14 @@ jobs:
       - name: npm version
         id: npm-version
         run: |
-          git remote -v
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git config user.name "schmas-ci"
+          git config user.email "$CI_USER@users.noreply.github.com"
+          git config user.name "continuous-integration"
 
           npm version ${{ steps.gitversion.outputs.semVer }} -m "Release %s"
           git push --follow-tags "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
         env:
-          CI_USER: "schmas" #${{ secrets.CI_GITHUB_USER }}
-          CI_TOKEN: ${{ secrets.GITHUB_TOKEN }} # ${{ secrets.CI_GITHUB_TOKEN }}
+          CI_USER: ${{ secrets.CI_GITHUB_USER }}
+          CI_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
 
       - name: compile and create vsix
         run: npm run package
