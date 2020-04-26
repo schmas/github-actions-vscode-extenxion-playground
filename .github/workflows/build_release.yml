@@ -97,10 +97,8 @@ jobs:
           git config user.name "continuous-integration"
 
           npm version ${{ steps.gitversion.outputs.semVer }}
-          git push --follow-tags "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
         env:
           CI_USER: ${{ secrets.CI_GITHUB_USER }}
-          CI_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
 
       - name: compile and create vsix
         run: npm run package
@@ -109,11 +107,19 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: ${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
-          path: ${{ github.gitflowworkspace }}/${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
+          path: ${{ github.workspace }}/${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
 
       # - name: publish to marketplace
       #   if: github.ref == 'refs/heads/master'
       #   run: npm run deploy ${{ env.VSCODE_MARKETPLACE_TOKEN }}
+
+      - name: git push
+        id: git-push
+        run: |
+          git push --follow-tags "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
+        env:
+          CI_USER: ${{ secrets.CI_GITHUB_USER }}
+          CI_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
 
       - name: create a release
         id: create_release
