@@ -140,3 +140,8 @@ jobs:
           asset_path: ${{ github.workspace }}/${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
           asset_content_type: application/zip
 
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          branch: develop
+
