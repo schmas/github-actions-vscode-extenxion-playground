@@ -9,3 +9,5 @@ update
 ## Changelog - Commits
 
 Follow those commit patterns: https://github.com/lob/generate-changelog#usage
+
+`npm run changelog-release -- -v v2.0.17`
