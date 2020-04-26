@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: Logerfo/gitflow-action@0.0.4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.BOT_GITHUB_TOKEN }}
           release: release
           dev: develop
           master: master
