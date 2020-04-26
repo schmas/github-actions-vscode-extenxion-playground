@@ -93,11 +93,11 @@ jobs:
       - name: npm version
         id: npm-version
         run: |
-          git config user.email "$CI_USER@users.noreply.github.com"
-          git config user.name "continuous-integration"
+          # git config user.email "$CI_USER@users.noreply.github.com"
+          # git config user.name "continuous-integration"
 
           npm version ${{ steps.gitversion.outputs.semVer }} -m "Release %s"
-          git push --follow-tags "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
+          # git push --follow-tags "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
         env:
           CI_USER: ${{ secrets.CI_GITHUB_USER }}
           CI_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
@@ -140,12 +140,20 @@ jobs:
           asset_path: ${{ github.workspace }}/${{ steps.npm-env.outputs.project_name }}-${{ steps.gitversion.outputs.semVer }}.vsix
           asset_content_type: application/zip
 
-  pr-to-develop:
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: gr2m/create-or-update-pull-request-action@v1.2.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
         with:
-          branch: "develop"
+          commit-message: update dependencies
+          title: Automated Dependency Updates
+          body: This is an auto-generated PR with dependency updates.
+          branch: release/${{ steps.gitversion.outputs.semVer }}
+
+  # pr-to-develop:
+  #   needs: release
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: gr2m/create-or-update-pull-request-action@v1.2.2
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         branch: "develop"
