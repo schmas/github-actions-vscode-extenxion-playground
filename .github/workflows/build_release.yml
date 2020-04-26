@@ -102,7 +102,12 @@ jobs:
       - name: changelog
         id: auto-changelog
         run: |
-          echo "::set-output name=changelog::$(npm run --silent changelog-release -- -v v${{ steps.gitversion.outputs.semVer }})"
+          changelog=$(npm run --silent changelog-release -- -v v${{ steps.gitversion.outputs.semVer }})
+          changelog="${changelog//'%'/'%25'}"
+          changelog="${changelog//$'\n'/'%0A'}"
+          changelog="${changelog//$'\r'/'%0D'}"
+
+          echo "::set-output name=changelog::$changelog"
 
       - name: create a release
         id: create_release
