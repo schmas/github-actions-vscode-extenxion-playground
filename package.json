@@ -2,7 +2,7 @@
   "name": "jump-to-tests",
   "displayName": "Jump to Tests",
   "description": "Switch between the code and the test file",
-  "version": "2.0.16",
+  "version": "2.0.41",
   "publisher": "schmas",
   "engines": {
     "vscode": "^1.44.0"
@@ -71,10 +71,10 @@
     "get-project-name": "echo $npm_package_name",
     "package": "vsce package",
     "deploy": "vsce publish -p",
-    "changelog": "auto-changelog -p -u --commit-limit false",
+    "changelog": "auto-changelog -p --unreleased --commit-limit false",
     "changelog-release": "auto-changelog -p -u --commit-limit false --template .changelog-github-template.hbs --unreleased --stdout",
     "changelog-debug": "auto-changelog -p --template json --output changelog-data.json",
-    "version": ""
+    "version": "auto-changelog -p --unreleased --commit-limit false && git add CHANGELOG.md"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",

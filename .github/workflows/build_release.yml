@@ -78,12 +78,23 @@ jobs:
           patch-syntax: |
             = /version => "${{ steps.gitversion.outputs.semVer }}"
 
-      # - name: add version in CHANGELOG.md
-      #   uses: cschleiden/replace-tokens@v1.0
-      #   with:
-      #     files: '${{github.workspace}}/CHANGELOG.md'
-      #   env:
-      #     VERSION: "${{ steps.gitversion.outputs.semVer }}"
+      - name: changelog
+        id: auto-changelog
+        run: |
+          changelog=$(npm run --silent changelog-release -- -v v${{ steps.gitversion.outputs.semVer }})
+          echo $changelog
+
+          changelog="${changelog//'%'/'%25'}"
+          changelog="${changelog//$'\n'/'%0A'}"
+          changelog="${changelog//$'\r'/'%0D'}"
+
+          echo "::set-output name=changelog::$changelog"
+
+      - name: npm version
+        id: npm-version
+        run: |
+          npm version ${{ steps.gitversion.outputs.semVer }} -m "Release %s" && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
+          git push --follow-tags
 
       - name: compile and create vsix
         run: npm run package
@@ -97,18 +108,6 @@ jobs:
       # - name: publish to marketplace
       #   if: github.ref == 'refs/heads/master'
       #   run: npm run deploy ${{ env.VSCODE_MARKETPLACE_TOKEN }}
-
-      - name: changelog
-        id: auto-changelog
-        run: |
-          changelog=$(npm run --silent changelog-release -- -v v${{ steps.gitversion.outputs.semVer }})
-          echo $changelog
-
-          changelog="${changelog//'%'/'%25'}"
-          changelog="${changelog//$'\n'/'%0A'}"
-          changelog="${changelog//$'\r'/'%0D'}"
-
-          echo "::set-output name=changelog::$changelog"
 
       - name: create a release
         id: create_release
