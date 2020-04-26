@@ -2,7 +2,7 @@
   "name": "jump-to-tests",
   "displayName": "Jump to Tests",
   "description": "Switch between the code and the test file",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "publisher": "schmas",
   "engines": {
     "vscode": "^1.44.0"
@@ -115,11 +115,11 @@
   },
   "release": {
     "plugins": [
-     "@semantic-release/commit-analyzer",
-     "@semantic-release/release-notes-generator",
-     "@semantic-release/changelog",
-     "@semantic-release/git"
-   ],
-   "branch": "master"
- }
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ],
+    "branch": "master"
+  }
 }
