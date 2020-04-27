@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.1.29](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.1.28...v2.1.29) (2020-04-26)
+
+### Commits
+
+- updated [`c7cd9f7`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/c7cd9f79a3cfcf95445bb0bc4e253064f33bc652)
+
 ## [v2.1.28](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.1.27...v2.1.28) (2020-04-26)
 
 ### Commits
@@ -189,7 +195,7 @@
 - docs(readme): readme updated [`1c8c64f`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/1c8c64ff286fadf79b1c87b005f538d182870b13)
 - ci(fix): mergify condition changed [`fcaf41d`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/fcaf41da34ca971aefd94027ce3e5461f7e1031d)
 
-## [v2.0.14](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.13...v2.0.14) (2020-04-26)
+## [v2.0.14](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.13...v2.0.14) (2020-04-27)
 
 ## [v2.0.13](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.12...v2.0.13) (2020-04-26)
 
@@ -203,9 +209,9 @@
 - updated [`64f13b4`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/64f13b47580ddd3fa52d900ac1431529863109bf)
 - updated [`f145e02`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/f145e02a5ff92b604fe0c6f114bb779d40c45c0a)
 
-## [v2.0.12](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.11...v2.0.12) (2020-04-26)
+## [v2.0.12](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.11...v2.0.12) (2020-04-27)
 
-## [v2.0.11](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.10...v2.0.11) (2020-04-26)
+## [v2.0.11](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.10...v2.0.11) (2020-04-27)
 
 ## [v2.0.10](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.8...v2.0.10) (2020-04-26)
 
@@ -260,9 +266,9 @@
 
 - updated [`9d46bfd`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/9d46bfd2cdba064b20a0d8d435f836c502ac710a)
 
-## [v2.0.4](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.3...v2.0.4) (2020-04-26)
+## [v2.0.4](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.3...v2.0.4) (2020-04-27)
 
-## [v2.0.3](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.2...v2.0.3) (2020-04-26)
+## [v2.0.3](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v2.0.2...v2.0.3) (2020-04-27)
 
 ## [v2.0.2](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v1.0.31...v2.0.2) (2020-04-25)
 
@@ -286,7 +292,7 @@
 - updated [`56ccb72`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/56ccb72db9db79fb55d3088e3d626914fbb8c0d8)
 - updated [`b8ad075`](https://github.com/schmas/github-actions-vscode-extenxion-playground/commit/b8ad075048bc66c506c428bd019581ea70c09de9)
 
-## [v1.0.29](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v0.1.28...v1.0.29) (2020-04-26)
+## [v1.0.29](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v0.1.28...v1.0.29) (2020-04-27)
 
 ## [v0.1.28](https://github.com/schmas/github-actions-vscode-extenxion-playground/compare/v0.1.0...v0.1.28) (2020-04-25)
 
