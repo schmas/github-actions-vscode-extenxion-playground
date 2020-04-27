@@ -26,7 +26,7 @@ jobs:
 
       - run: npm install
 
-      - name: run testsC7a9l8a1!
+      - name: run tests
         uses: GabrielBB/xvfb-action@v1.0
         with:
           run: npm test
