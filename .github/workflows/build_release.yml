@@ -12,7 +12,8 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        # os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout
@@ -97,9 +98,7 @@ jobs:
           git config user.email "$CI_USER@users.noreply.github.com"
           git config user.name "continuous-integration"
 
-          npm version ${{ steps.gitversion.outputs.semVer }} #--git-tag-version=false
-          # git add -A .
-          # git commit -m "${{ steps.gitversion.outputs.semVer }}"
+          npm version ${{ steps.gitversion.outputs.semVer }}
         env:
           CI_USER: ${{ secrets.CI_GITHUB_USER }}
 
