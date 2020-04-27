@@ -97,7 +97,9 @@ jobs:
           git config user.email "$CI_USER@users.noreply.github.com"
           git config user.name "continuous-integration"
 
-          npm version ${{ steps.gitversion.outputs.semVer }}
+          npm version ${{ steps.gitversion.outputs.semVer }} #--git-tag-version=false
+          # git add -A .
+          # git commit -m "${{ steps.gitversion.outputs.semVer }}"
         env:
           CI_USER: ${{ secrets.CI_GITHUB_USER }}
 
@@ -118,10 +120,10 @@ jobs:
         id: git-push
         if: github.ref == 'refs/heads/master'
         run: |
-          git push --follow-tags "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
+          git push "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
         env:
           CI_USER: ${{ secrets.CI_GITHUB_USER }}
-          CI_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CI_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
 
       - name: create a release
         id: create_release
