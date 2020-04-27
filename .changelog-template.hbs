@@ -1,6 +1,7 @@
-# Changelog
+### Changelog
 
 {{#each releases}}
+  #
   {{#if href}}
     #### [{{title}}]({{href}}) ({{isoDate}})
   {{else}}
@@ -19,6 +20,7 @@
     {{/each}}
   {{/if}}
 
+  {{! lit commits with feature: in message, use feature: or Feature: }}
   {{#commit-list
     commits
     heading='##### Features'
